@@ -24,7 +24,7 @@ def run_questions(col: str, out_csv: str):
     for _, r in df.iterrows():
         agent = Agent(tag=f"q_{r['id']}")
         reply, meta = agent.respond(r[col])
-        time.sleep(3)
+        time.sleep(4)
         ok = _score(reply, r["must_include"], r["must_not_include"])
         correct += ok
         rows.append({"id": r["id"], "ok": ok, "reply": reply, "sources": meta.get("sources", [])})
@@ -42,7 +42,7 @@ def run_conversations(out_json: str):
         turns = []
         for _, r in grp.iterrows():
             reply, meta = agent.respond(r["customer_message"])
-            time.sleep(3)
+            time.sleep(4)
             ok = _score(reply, r["must_include"], r["must_not_include"])
             turns.append({"turn": int(r["turn"]), "ok": ok, "reply": reply, "sources": meta.get("sources", [])})
 

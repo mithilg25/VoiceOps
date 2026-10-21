@@ -1,13 +1,18 @@
-import json, time
+import sys, json, time
 from pathlib import Path
+
+# Force Python to look in the local root directory FIRST
+ROOT_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT_DIR))
+
 from tools import lookup_order as _lo, create_ticket as _ct
 
 LOG = Path("sample_outputs/tool_log.jsonl")
 
 def _log(entry):
-    LOG.parent.mkdir(parents = True, exist_ok = True)
-    with LOG.open("a", encoding = "utf-8") as f:
-        f.write(json.dumps(entry, default = str)+"\n")
+    LOG.parent.mkdir(parents=True, exist_ok=True)
+    with LOG.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, default=str) + "\n")
 
 def lookup_order(order_id, verification_value=None, tag=None):
     r = _lo(order_id, verification_value)

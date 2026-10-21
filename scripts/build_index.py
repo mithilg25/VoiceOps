@@ -22,4 +22,34 @@ def parse_doc(path: Path) -> list[dict]:
                 fm[k.split()] = v.strip()
         body_start = m.end()
     body = text[body_start:]
-    matches = list(SEC_RE.finditer(body))            
+    matches = list(SEC_RE.finditer(body))  
+    chunks = []
+    for i, sm in enumerate(matches):
+        start =sm.start()
+        end   = matches[i+1].start() if i+1 < len(matches) else len(body)
+        chunks.append({
+            "doc_id": fm.get("doc_id", ""), "doc_type": fm.get("doc_type", ""),
+            "status": fm.get("status", ""), "effective_from": fm.get("effective_from", ""),
+            "section_id": sm.group(1), "title": sm.group(2).strip(),
+            "text": body[start:end].strip(), "source": path.name,
+        })
+    return chunks
+
+def main():
+    all_chunks = []
+    for p in sorted(KB_DIR.glob("*md")):
+        all_chunks += parse_doc(p)
+    print(f"{len(all_chunks)} chunks from {len(list(KB_DIR.glob('*.md')))} docs")
+
+    model = SentenceTransformer(EMBED_MODEL)
+    texts = [f"[{c['section_id']}] {c['title']}\n{c['text']}" for c in all_chunks]
+    embs = model.encode(texts, normalize_embeddings=True, show_progress_bar=True)
+
+    np.save(OUT_DIR / "embeddings.npy", embs)
+    (OUT_DIR / "chunks.json").write_text(json.dumps(all_chunks, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Wrote index files to {OUT_DIR}")
+
+    if __name__ == "__main__":
+        main()
+
+

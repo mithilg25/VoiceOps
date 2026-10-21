@@ -1,7 +1,7 @@
 import json, re
 from .llm import chat
 from .rag import retrieve, format_context
-from .data import get_product, search_products, check_pincode, business_days_between, add_business_days
+from .data import get_product, search_products, check_pincode, add_business_days, business_days_between
 from . import tools_wrapper
 
 SYSTEM_BASE = """You are ZentroMart's AI support assistant.
@@ -16,13 +16,13 @@ HARD RULES
 3. Ground every answer in the RETRIEVED DOCUMENTS (below) or in tool results. If neither covers the question, say you don't know and offer to connect a colleague. NEVER invent policies, dates, or amounts.
 4. Precedence: current policy > agent_guide > help > FAQ > marketing. Superseded documents apply ONLY to the case their successor names.
 5. NEVER share order details until identity is verified. Ask for the order ID, then ONE of: phone last-4 OR delivery pincode. Max ONE retry. If both attempts fail, refuse order details.
-6. Escalate when ANY of these is true: (a) damaged/defective/wrong item worth > ₹10,000; (b) suspected fraud; (c) legal action; (d) contacts_last_7_days >= 2 (third-or-later contact); (e) refund more than 3 business days past its max timeline; (f) customer asks for a human; (g) safety risk. Before escalating, call create_ticket().
+6. Escalate when ANY of these is true: (a) damaged/defective/wrong item worth > ₹10,000; (b) suspected fraud; (c) legal action; (d) contacts_last_7_days >= 2; (e) refund more than 3 business days past its max timeline; (f) customer asks for a human; (g) safety risk. Before escalating, call create_ticket().
 7. Never claim an action you did not take. There is NO cancel tool — guide the customer to My Orders.
 
-CRITICAL FORMATTING RULES (The grader is strict!):
-- If you mention a date, you MUST write it exactly as YYYY-MM-DD (e.g., 2026-10-27). DO NOT write "October 27th".
-- If you mention a number or currency, you MUST use digits (e.g., 79, ₹49, 48). DO NOT use words like "seventy-nine".
-- For refund timelines: Check [REF-2], find the number of days, and use the `add_business_days` tool to calculate the exact YYYY-MM-DD date. You MUST include this exact date in your reply.
+CRITICAL FORMATTING RULES:
+- When quoting a date, use the format "27 October 2026". You may include the ISO date in brackets if helpful.
+- If you mention a number or currency, you MUST use digits (e.g., 79, ₹49, 48).
+- For refund timelines: Check [REF-2], find the number of days, and use the `add_business_days` tool to calculate the exact date. You MUST include this exact date in your reply.
 """
 
 SYSTEM_VOICE = """
@@ -52,7 +52,7 @@ TOOLS_SCHEMA = [
         "name": "get_product",
         "description": "Look up a specific SKU in the catalog.",
         "parameters": {"type": "object", "properties": {"sku": {"type": "string"}}, "required": ["sku"]}
-        }},
+    }},
     {"type": "function", "function": {
         "name": "search_products",
         "description": "Search the catalog by product title or brand.",
@@ -67,7 +67,8 @@ TOOLS_SCHEMA = [
         "name": "add_business_days",
         "description": "Return the date n business days after a given ISO date. Use this to calculate exact refund dates.",
         "parameters": {"type": "object", "properties": {"start_iso": {"type": "string"}, "n": {"type": "integer"}}, "required": ["start_iso", "n"]}
-    }},{"type": "function", "function": {
+    }},
+    {"type": "function", "function": {
         "name": "business_days_between",
         "description": "Count business days between two ISO dates (start excluded, end included). Use for overdue checks.",
         "parameters": {"type": "object", "properties": {"start_iso": {"type": "string"}, "end_iso": {"type": "string"}}, "required": ["start_iso", "end_iso"]}
@@ -75,33 +76,44 @@ TOOLS_SCHEMA = [
 ]
 
 class Agent:
-    def __init__(self, voice: bool = False, tag:str | None = None):
+    def __init__(self, voice: bool = False, tag: str | None = None):
         self.voice = voice
-        self.tag = tag or "default"
+        self.tag   = tag or "default"
         system = SYSTEM_BASE + (SYSTEM_VOICE if voice else "")
-        self.history = [{"role" : "system", "content": system}]
-        self.verified_orders = {}
-        self.verified_attempts = {}
-        self.last_sources = []
+        self.history = [{"role": "system", "content": system}]
+        self.verified_orders   = {}
+        self.verify_attempts   = {}  # FIXED: was self.verified_attempts
+        self.last_sources      = []
 
     def _query(self) -> str:
-        user_msgs = [m["content"] for m in self.history if m["role"] == "user"][-3:]
-        return " ".join(user_msgs) if user_msgs else ""   
+        # IMPROVEMENT: Weight the current message higher. Only use history for short follow-ups.
+        user_msgs = [m["content"] for m in self.history if m["role"] == "user"]
+        if not user_msgs: return ""
+        last_msg = user_msgs[-1]
+        
+        if len(last_msg.split()) < 5 and len(user_msgs) > 1:
+            return user_msgs[-2] + " " + last_msg
+        return last_msg
 
     def _retrieve(self) -> tuple[str, list[str]]:
         hits = list(retrieve(self._query(), k=6))
-        chunks = [c for c, _ in hits] 
+        chunks = [c for c, _ in hits]
         self.last_sources = [c["section_id"] for c in chunks]
         return format_context(chunks), self.last_sources
 
     def respond(self, user_msg: str):
+        # FIXED: Append the user message FIRST, so retrieval actually sees it.
+        self.history.append({"role": "user", "content": user_msg})
+        
         ctx_text, source_ids = self._retrieve()
-        self.history.append({"role":"user", "content": user_msg})
 
-        turn_messages = self.history + [{"role":"system", "content": f"RETRIEVED DOCUMENTS for this turn:\n\n{ctx_text}"}]
+        turn_messages = self.history + [{
+            "role": "system",
+            "content": f"RETRIEVED DOCUMENTS for this turn:\n\n{ctx_text}"
+        }]
 
         for _ in range(8):
-            resp = chat(turn_messages, tools = TOOLS_SCHEMA)
+            resp = chat(turn_messages, tools=TOOLS_SCHEMA)
             msg = resp.choices[0].message
             turn_messages.append(msg)
 
@@ -114,12 +126,13 @@ class Agent:
                 args = json.loads(tc.function.arguments or "{}")
                 result = self._dispatch(name, args)
                 turn_messages.append({
-                    "role":"tool", "tool_call_id":tc.id, "content": json.dumps(result, default=str)
+                    "role": "tool", "tool_call_id": tc.id,
+                    "content": json.dumps(result, default=str)
                 })
 
-        fallback  =  "Sorry, I'm having trouble with that. Let me connect you to a colleague."
-        self.history.append({"role": "assistant", "content":fallback})
-        return fallback, {"sources": source_ids}   
+        fallback = "Sorry, I'm having trouble with that. Let me connect you to a colleague."
+        self.history.append({"role": "assistant", "content": fallback})
+        return fallback, {"sources": source_ids}
 
     def _dispatch(self, name: str, args: dict):
         if name == "lookup_order":
@@ -130,32 +143,36 @@ class Agent:
 
             used = self.verify_attempts.get(oid, 0)
             if used >= 2:
-                return {"verified": False, "message": "Verification already failed twice. Do not share order details."}   
-
-            result = tools_wrapper.lookup_order(oid, verification_value=str(vv), tag = self.tag)
-
+                return {"verified": False, "message": "Verification already failed twice. Do not share order details."}
+            
+            result = tools_wrapper.lookup_order(oid, verification_value=str(vv), tag=self.tag)
             if not result.get("verified"):
-                self.verify_attempts[oid] = used+1
+                self.verify_attempts[oid] = used + 1
             else:
                 self.verified_orders[oid] = result
                 self.history.append({"role": "system", "content": f"Order {oid} is now VERIFIED. You may share its details."})
-
             return result
 
-        if name == " create_ticket":
-            return tools_wrapper.create_ticket(summary = args.get("summary", ""), order_id = args.get("order_id"), reason = args.get("reason", intent = args.get("intent"), tag = self.tag))
-        if name == "get_product":
-            return get_product(args.get("sku", ""))
-        if name == "search_products":
-            return search_products(args.get("query", ""))
-        if name == "check_pincode":
-            return check_pincode(args.get("pincode", ""))
+        # FIXED: Removed the accidental leading space in "create_ticket"
+        if name == "create_ticket":
+            # FIXED: Re-wrote the broken parentheses
+            return tools_wrapper.create_ticket(
+                summary=args.get("summary", ""),
+                order_id=args.get("order_id"),
+                reason=args.get("reason"),
+                intent=args.get("intent"),
+                tag=self.tag
+            )
+            
+        if name == "get_product":         return get_product(args.get("sku", ""))
+        if name == "search_products":     return search_products(args.get("query", ""))
+        if name == "check_pincode":       return check_pincode(args.get("pincode", ""))
         if name == "add_business_days":
-            return {"date" : add_business_days(args.get("start_iso", ""), int(args.get("n", 0)))}
+            return {"date": add_business_days(args.get("start_iso", ""), int(args.get("n", 0)))}
         if name == "business_days_between":
             return {"days": business_days_between(args.get("start_iso", ""), args.get("end_iso", ""))}
 
-        return {"error": f"unknown tool {name}"}    
+        return {"error": f"unknown tool {name}"}  
 
 
 

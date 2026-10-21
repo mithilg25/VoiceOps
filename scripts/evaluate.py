@@ -10,12 +10,29 @@ sys.path.insert(0, str(ROOT_DIR))
 from src.agent import Agent
 from src.tools_wrapper import LOG
 
-def _score(reply: str, must_in: str, must_not: str) -> bool:
+def _score(reply: str, must_in: str, must_not: str, expected_decision: str = None) -> bool:
     r = reply.lower()
+    
+    # 1. Keyword Matching (Must Include & Must Not Include)
     ok_in = all(any(alt.strip().lower() in r for alt in fact.split("/"))
                 for fact in re.split(r"\s*;\s*", must_in) if fact.strip())
     ok_not = not any(bad.strip().lower() in r for bad in re.split(r"\s*;\s*", must_not) if bad.strip())
-    return ok_in and ok_not
+    
+    if not (ok_in and ok_not):
+        return False
+
+    # 2. Heuristic Decision Matching (Claude's suggestion)
+    if expected_decision == "escalate":
+        if not any(word in r for word in ["ticket", "human", "colleague", "transfer", "escalate"]):
+            return False
+    elif expected_decision == "refuse":
+        if not any(word in r for word in ["sorry", "cannot", "can't", "unable", "not allowed", "maaf"]):
+            return False
+    elif expected_decision == "clarify":
+        if not any(word in r for word in ["order id", "pincode", "which item", "could you provide", "what is your"]):
+            return False
+
+    return True
 
 def run_questions(col: str, out_csv: str):
     # 2. Use absolute paths for data

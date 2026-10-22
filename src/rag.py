@@ -8,7 +8,7 @@ _DIR = Path(__file__).resolve().parent / "rag_index"
 
 # AUTO-INDEX LOGIC
 if not (_DIR / "chunks.json").exists() or not (_DIR / "embeddings.npy").exists():
-    print("⚠️ Vector index not found. Automatically building it now...")
+    print("[Warning] Vector index not found. Automatically building it now...")
     import sys
     ROOT_DIR = Path(__file__).resolve().parent.parent
     sys.path.insert(0, str(ROOT_DIR))

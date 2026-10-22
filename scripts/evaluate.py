@@ -3,53 +3,37 @@ import argparse, json, re, sys, time
 from pathlib import Path
 import pandas as pd
 
-# 1. Fix Python path
 ROOT_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT_DIR))
 
 from src.agent import Agent
 from src.tools_wrapper import LOG
+from src.config import DATASET_DIR
 
-def _score(reply: str, must_in: str, must_not: str, expected_decision: str = None) -> bool:
+def _score(reply: str, must_in: str, must_not: str) -> bool:
     r = reply.lower()
-    
-    # 1. Keyword Matching (Must Include & Must Not Include)
     ok_in = all(any(alt.strip().lower() in r for alt in fact.split("/"))
                 for fact in re.split(r"\s*;\s*", must_in) if fact.strip())
     ok_not = not any(bad.strip().lower() in r for bad in re.split(r"\s*;\s*", must_not) if bad.strip())
-    
-    if not (ok_in and ok_not):
-        return False
-
-    # 2. Heuristic Decision Matching (Claude's suggestion)
-    if expected_decision == "escalate":
-        if not any(word in r for word in ["ticket", "human", "colleague", "transfer", "escalate"]):
-            return False
-    elif expected_decision == "refuse":
-        if not any(word in r for word in ["sorry", "cannot", "can't", "unable", "not allowed", "maaf"]):
-            return False
-    elif expected_decision == "clarify":
-        if not any(word in r for word in ["order id", "pincode", "which item", "could you provide", "what is your"]):
-            return False
-
-    return True
+    return ok_in and ok_not
 
 def run_questions(col: str, out_csv: str):
-    # 2. Use absolute paths for data
-    df = pd.read_csv(ROOT_DIR / "practice/questions.csv", dtype=str, keep_default_na=False)
+    csv_path = Path(DATASET_DIR) / "practice" / "questions.csv"
+    df = pd.read_csv(csv_path, dtype=str, keep_default_na=False)
     rows, correct = [], 0
     for _, r in df.iterrows():
         agent = Agent(tag=f"q_{r['id']}")
         reply, meta = agent.respond(r[col])
-        time.sleep(4)
         ok = _score(reply, r["must_include"], r["must_not_include"])
         correct += ok
         rows.append({"id": r["id"], "ok": ok, "reply": reply, "sources": meta.get("sources", [])})
+        time.sleep(3)
     pd.DataFrame(rows).to_csv(out_csv, index=False)
     print(f"[{col}]  {correct}/{len(df)} = {correct/len(df):.1%}")
 
 def run_conversations(out_json: str):
-    df = pd.read_csv(ROOT_DIR / "practice/conversations.csv", dtype=str, keep_default_na=False)
+    csv_path = Path(DATASET_DIR) / "practice" / "conversations.csv"
+    df = pd.read_csv(csv_path, dtype=str, keep_default_na=False)
     per_conv, ok_convs = {}, 0
     
     for cid, grp in df.groupby("conversation_id", sort=False):
@@ -59,9 +43,9 @@ def run_conversations(out_json: str):
         turns = []
         for _, r in grp.iterrows():
             reply, meta = agent.respond(r["customer_message"])
-            time.sleep(4)
             ok = _score(reply, r["must_include"], r["must_not_include"])
             turns.append({"turn": int(r["turn"]), "ok": ok, "reply": reply, "sources": meta.get("sources", [])})
+            time.sleep(3)
 
         calls = []
         if LOG.exists():

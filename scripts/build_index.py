@@ -1,17 +1,16 @@
 
+#!/usr/bin/env python3
 import json, re, sys
 from pathlib import Path
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-
 ROOT_DIR = Path(__file__).resolve().parent.parent
-sys.path.append(str(ROOT_DIR))
+sys.path.insert(0, str(ROOT_DIR))
 
-from src.config import EMBED_MODEL
+from src.config import EMBED_MODEL, DATASET_DIR
 
-# 2. Use absolute paths
-KB_DIR  = ROOT_DIR / "kb"
+KB_DIR  = Path(DATASET_DIR) / "kb"
 OUT_DIR = ROOT_DIR / "src" / "rag_index"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -44,6 +43,11 @@ def parse_doc(path: Path) -> list[dict]:
 
 def main():
     all_chunks = []
+    if not KB_DIR.exists():
+        print(f"[Error] Knowledge base directory not found at {KB_DIR}")
+        print("Please check your DATASET_DIR setting or ensure the dataset is in the project root.")
+        return
+
     for p in sorted(KB_DIR.glob("*.md")):
         all_chunks += parse_doc(p)
     print(f"{len(all_chunks)} chunks from {len(list(KB_DIR.glob('*.md')))} docs")

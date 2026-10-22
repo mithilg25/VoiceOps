@@ -5,6 +5,16 @@ from sentence_transformers import SentenceTransformer
 from .config import EMBED_MODEL
 
 _DIR = Path(__file__).resolve().parent / "rag_index"
+
+# AUTO-INDEX LOGIC
+if not (_DIR / "chunks.json").exists() or not (_DIR / "embeddings.npy").exists():
+    print("⚠️ Vector index not found. Automatically building it now...")
+    import sys
+    ROOT_DIR = Path(__file__).resolve().parent.parent
+    sys.path.insert(0, str(ROOT_DIR))
+    from scripts.build_index import main as build_index
+    build_index()
+
 _chunks = json.loads((_DIR / "chunks.json").read_text(encoding="utf-8"))
 _embs   = np.load(_DIR / "embeddings.npy")
 _model  = SentenceTransformer(EMBED_MODEL)

@@ -1,9 +1,8 @@
 import sys, json, time
 from pathlib import Path
+from . import config
 
-# Force Python to look in the local root directory FIRST
-ROOT_DIR = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT_DIR))
+sys.path.insert(0, str(config.DATASET_DIR))
 
 from tools import lookup_order as _lo, create_ticket as _ct
 

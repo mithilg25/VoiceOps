@@ -1,8 +1,9 @@
 import csv
 from datetime import date, timedelta
 from pathlib import Path
+from . import config
 
-_DATA = Path(__file__).resolve().parent.parent / "data"
+_DATA = Path(config.DATASET_DIR) / "data"
 
 def _read(name):
     # Changed encoding to utf-8-sig to handle any invisible BOM characters in the CSV

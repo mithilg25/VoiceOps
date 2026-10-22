@@ -12,3 +12,6 @@ TKT19a66bec261a4670bf530de7eadee43f,2026-10-22T12:36:55,45011817,order assistanc
 TKTb2874516d3f44d94bc73a6ed86360c2a,2026-10-22T12:37:38,48196636,general inquiry,contacts_last_7_days >= 2,"Customer reached out regarding order 48196636. Contacts in last 7 days count is 2, triggering escalation."
 TKT5498f1218ea440d3866b458bd1acd1aa,2026-10-22T12:37:58,48196636,order_issue,multiple contacts within 7 days,Customer has called three times in a week regarding order 48196636. Needs human assistance.
 TKT0554f21935ce4aeea9bf7ccc8d71d9be,2026-10-22T12:39:57,16640894,refund_status,refund overdue beyond policy timeline,Refund for order 16640894 was initiated on 20 July 2026 but not completed by expected date (20 July 2026). Customer inquires about status on 20 October 2026.
+TKT6674f23efd1b445481c15fc9d281b462,2026-10-22T14:42:54,35061733,request_human_agent,Customer requested human agent,Customer wants to speak to a human agent immediately.
+TKTac5fd9e9e8954a7a9647ed63168ca1c5,2026-10-22T14:46:11,35061733,human_hand_over,Customer requested to speak to a human agent,User wants to speak with a human agent regarding order 35061733.
+TKT8b667ae7d77a41bdbde57edb60cb5206,2026-10-22T15:56:04,35061733,human handover request,Customer requested human agent,Customer wants to speak to a human agent immediately.

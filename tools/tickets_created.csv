@@ -1,0 +1,14 @@
+ticket_id,created_at,order_id,intent,reason,summary
+TKT55f2620438aa41a2a33d50c9527a9498,2026-10-22T12:06:15,37113676,human_handover,Customer requested to speak with a human,Customer wants to talk to a human colleague.
+TKT93cf1a8295bf49c780ee1e14566f263a,2026-10-22T12:07:01,6649 2475,human_handoff,Customer requested to speak to a human,Customer asked to talk to a person regarding order 6649 2475.
+TKTbefce880478d421fbb3d88173d14eba6,2026-10-22T12:07:31,45011817,general inquiry,contacts_last_7_days >= 2,"Customer initiated chat about order 45011817; contacts_last_7_days is 2, triggering escalation per policy."
+TKT0bc850ba1d81444cb72bb8fd9a721d5b,2026-10-22T12:08:08,45011817,order_status_inquiry,multiple_contacts,"Customer called third time this week about order 45011817. Issue: order status not delivered yet. Contacts_last_7_days is 2, now 3. Escalate per policy."
+TKT34f16d3059d74b87ae57f38e3d44cbf8,2026-10-22T12:09:01,48196636,General inquiry,Contacts in last 7 days >= 2,"Customer contacted regarding order 4819 6636. Contacts_last_7_days is 2, triggering escalation per policy."
+TKT9a681a15058a49c3854bebe20eb3fb05,2026-10-22T12:09:20,48196636,general_inquiry,multiple contacts within a week,Customer has contacted support three times in a week regarding order 48196636 and requests assistance.
+TKTfba7f9665130443eafd5a28ccf469451,2026-10-22T12:34:47,37113676,human_hand_over,Customer requested to talk to a human,User requested to speak with a human colleague.
+TKT211716ff9b204295a478f923a9bea625,2026-10-22T12:35:42,66492475,human_hand_over,Customer requested to speak to a human,Customer asked to talk to a person.
+TKTae8d6e6bc6b14578bb59fb90420dbc8d,2026-10-22T12:36:25,45011817,general inquiry,contacts_last_7_days >= 2,"Customer contacted support regarding order 45011817. Contacts in last 7 days count is 2, which requires escalation per policy."
+TKT19a66bec261a4670bf530de7eadee43f,2026-10-22T12:36:55,45011817,order assistance,multiple contacts in last 7 days (>=2),Customer called three times this week regarding an issue with order 45011817. Customer is frustrated and wants help. Verified order details. No specific issue identified yet. Escalating per policy.
+TKTb2874516d3f44d94bc73a6ed86360c2a,2026-10-22T12:37:38,48196636,general inquiry,contacts_last_7_days >= 2,"Customer reached out regarding order 48196636. Contacts in last 7 days count is 2, triggering escalation."
+TKT5498f1218ea440d3866b458bd1acd1aa,2026-10-22T12:37:58,48196636,order_issue,multiple contacts within 7 days,Customer has called three times in a week regarding order 48196636. Needs human assistance.
+TKT0554f21935ce4aeea9bf7ccc8d71d9be,2026-10-22T12:39:57,16640894,refund_status,refund overdue beyond policy timeline,Refund for order 16640894 was initiated on 20 July 2026 but not completed by expected date (20 July 2026). Customer inquires about status on 20 October 2026.

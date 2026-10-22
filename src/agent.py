@@ -36,7 +36,7 @@ TOOLS_SCHEMA = [
         "name": "lookup_order",
         "description": "Look up a synthetic ZentroMart order. Without verification_value, returns only a verification prompt. Pass a 4-digit phone suffix OR a 6-digit delivery pincode to unlock details.",
         "parameters": {"type": "object", "properties": {
-            "order_id": {"type": "string"},
+            "order_id": {"type": ["string", "null"]},
             "verification_value": {"type": "string", "description": "4-digit phone suffix OR 6-digit pincode. Omit on first call."}
         }, "required": ["order_id"]}
     }},

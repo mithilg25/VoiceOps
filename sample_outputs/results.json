@@ -1,0 +1,16 @@
+[
+  {
+    "input": "WhatsApp Audio 2026-10-22 at 11.38.44.wav",
+    "heard": "hi i want to return my wimbles x two pro earbuds",
+    "reply": "Hello, I’m ZentroMart’s AI assistant. I can help you return your earbuds. Could you please share your order ID?",
+    "reply_audio": "audio\\WhatsApp Audio 2026-10-22 at 11.38.44.reply.wav",
+    "sources": [
+      "TRB-1",
+      "RET-3",
+      "RET-4",
+      "STY-3",
+      "RET-2",
+      "PLS-2"
+    ]
+  }
+]

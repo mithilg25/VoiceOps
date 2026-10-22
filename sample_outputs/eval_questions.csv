@@ -1,94 +1,60 @@
 id,ok,reply,sources
-PQ0002,True,"नमस्ते! मैं ज़ेन्त्रोमार्ट का AI सपोर्ट असिस्टेंट हूँ।  
+PQ0002,True,"Namaste! SKU ELE‑0012 ZentroMart Assured hai, yani delivery ke 12 mahine tak warranty milti hai. Claim karne ke liye app mein **My Orders** khol kar us item ko chunen, “Raise a claim” par tap karein, aur ZentroMart aapke liye pickup aur repair/replacement ka prabandh karega. Kya aapko claim process mein koi aur madad chahiye?","['WAR-2', 'PLS-1', 'RET-1', 'MKT-1', 'MKS-1', 'PAY-4']"
+PQ0003,True,I’m an AI assistant. Refunds to the ZentroMart Wallet are processed instantly once the refund is approved. Would you like help with anything else?,"['REF-3', 'REF-1', 'RET-7', 'PAY-4', 'MKS-2', 'RET-6']"
+PQ0004,True,"Hello, I’m ZentroMart’s AI assistant. I’m not aware of a midnight delivery option in our current schedule. Would you like me to connect you with a colleague for more details?","['DEL-1', 'CAN-3', 'DEL-4', 'PAY-2', 'DEL-2', 'REF-3']"
+PQ0005,False,"Namaste! हाँ, SKU ELE‑0002 ZentroMart Assured है, यानी डिलीवरी के 12 महीने तक वारंटी मिलती है। दावा करने के लिए My Orders में जाकर “Raise a Claim” चुनें; फिर हम पिक‑अप, मरम्मत या रिप्लेसमेंट की व्यवस्था करेंगे। कृपया अपना ऑर्डर ID बताएँ ताकि मैं आगे मदद कर सकूँ।","['WAR-2', 'PLS-1', 'RET-1', 'PAY-4', 'MKS-1', 'MKT-1']"
+PQ0006,True,"I’m an AI assistant here to help. As a ZentroMart Plus member, the ₹49 reverse‑pickup fee is waived for change‑of‑mind returns of shoes. Could you share your order ID so I can look up the details?","['RET-6', 'WAR-2', 'PLS-1', 'DEL-4', 'RET-1', 'RET-7']"
+PQ0008,False,"Namaste! मैं ZentroMart का AI सहायक हूँ। कृपया अपना ऑर्डर ID बताइए, साथ में अपने पंजीकृत फ़ोन का आख़िरी 4 अंक या डिलीवरी पिनकोड (6 अंक) दें ताकि मैं आपकी पहचान पुष्टि कर सकूँ।","['REF-3', 'PAY-4', 'REF-5', 'REF-6', 'REF-1', 'PAY-3']"
+PQ0009,True,"Hello, I’m an AI assistant. I’m sorry, I don’t have information about a student discount. Would you like me to connect you with a colleague?","['DEL-2', 'PLS-1', 'PAY-2', 'RET-6', 'REF-4', 'DWM-2']"
+PQ0010,True,"Yes, the reverse‑pickup fee is waived for items that arrive damaged, such as torn jeans. Would you like help starting the return process?","['MKS-3', 'RET-4', 'RET-5', 'RET-8', 'WAR-2', 'RET-6']"
+PQ0013,True,"नमस्ते, मैं ZentroMart का AI सहायक हूँ। सौंदर्य एवं व्यक्तिगत देखभाल उत्पाद केवल अनखुले और सील intact होने पर ही वापस किए जा सकते हैं, इसलिए खुले Gulmohar Matte Lipstick को वापस नहीं किया जा सकता। कृपया अपना ऑर्डर ID बताएं।","['RET-4', 'PAY-4', 'WAR-2', 'REF-3', 'CPN-3', 'FAQH-3']"
+PQ0014,True,"बुक्स और स्टेशनरी श्रेणी के तहत, Pagecraft A5 Ruled Notebook (Pack of 4) को डिलीवरी की तारीख से **10 कैलेंडर दिन** के भीतर लौटाया जा सकता है【RET-2】। यह अवधि डिलीवरी के दिन से शुरू होती है। क्या मैं आपको रिटर्न प्रक्रिया में मदद करूँ?","['DWM-4', 'RET-3', 'REF-3', 'RET-2', 'REF-1', 'DWM-1']"
+PQ0015,True,"Namaste, मैं ZentroMart का AI सहायक हूँ। मुझे खेद है, लेकिन मेरे पास थोक ऑर्डर के लिए GST इनवॉइस के बारे में जानकारी नहीं है। क्या मैं आपको इस विषय में मदद करने के लिए एक सहयोगी से जोड़ूँ?","['RET-1', 'MKS-1', 'RVP-1', 'MKS-2', 'WAR-2', 'REF-1']"
+PQ0016,True,"I’m an AI assistant. According to our return policy, beauty and personal care items can only be returned if they are unopened with the seal intact, so a perfume that’s been opened and used can’t be returned. Would you like help exploring an exchange or another solution?","['RET-4', 'RET-3', 'DEL-3', 'TRB-4', 'RET-5', 'PLS-1']"
+PQ0018,True,"नमस्ते! मैं ZentroMart का AI सहायक हूँ। कृपया बताइए कि आप किस प्रकार का सामान (जैसे इलेक्ट्रॉनिक्स, कपड़े आदि) वापस करना चाहते हैं? इससे मैं सही रिटर्न अवधि बता सकूँगा।","['RET-3', 'RET-8', 'REF-2', 'REF-1', 'RET-7', 'REF-3']"
+PQ0019,True,"Hello, I’m an AI assistant. Since your Orbix Fit 3 Pro smartwatch was delivered on 20 July 2026, it falls under the older policy and has a **10‑day** return window counted in calendar days. May I have your order ID to check the details?","['RET-3', 'TRB-2', 'RET-4', 'WAR-2', 'RET-2', 'REF-3']"
+PQ0020,True,"नमस्ते, मैं ZentroMart का AI सहायक हूँ; फैशन श्रेणी के बैग के लिए डिलीवरी के बाद 15 कैलेंडर दिन होते हैं, लेकिन 1 अक्टूबर से 15 अक्टूबर 2026 के बीच दिए गए ऑर्डर के लिए 30 दिन मिलते हैं। क्या आप अपना ऑर्डर ID साझा कर सकते हैं?","['RET-8', 'REF-3', 'RET-3', 'RET-2', 'RET-7', 'REF-1']"
+PQ0021,True,"Hello, I’m ZentroMart’s AI assistant. If you’re not home, the courier will make up to 3 delivery attempts and send you an SMS after each missed attempt so you can reschedule; if all three attempts fail, the parcel is returned to our warehouse and a refund will be processed according to REF‑1. May I have your order ID to check the current delivery status?","['TRK-2', 'DEL-4', 'CAN-2', 'REF-1', 'DEL-3', 'TRK-1']"
+PQ0022,False,"I’m ZentroMart’s AI assistant. I’m not sure of the exact credit‑card refund timeline, as our current policy only details cash‑on‑delivery refunds. Would you like me to connect you with a colleague?","['REF-3', 'REF-1', 'PAY-3', 'REF-5', 'RET-7', 'REF-6']"
+PQ0023,False,"Hello, I’m ZentroMart’s AI assistant. Could you please share the order ID so I can look into this for you?","['CAN-1', 'CAN-2', 'IDV-4', 'PAY-3', 'FAQH-1', 'PAY-4']"
+PQ0024,True,"Hello, I’m ZentroMart’s AI assistant. For clothing items such as the Rangoli Cotton Straight Kurta, orders placed between 01 October and 15 October 2026 can be returned within 30 calendar days of delivery; otherwise the standard return window applies. Could you provide your order ID and either the last 4 digits of your phone number or the delivery pincode so I can confirm the exact return period for your purchase?","['RET-8', 'RET-3', 'DWM-4', 'REF-1', 'WAR-2', 'PAY-2']"
+PQ0025,False,"I’m sorry, I don’t have the exact timeline for net‑banking refunds. Let me connect you with a colleague who can help.","['REF-3', 'RET-7', 'REF-1', 'REF-6', 'REF-5', 'PAY-3']"
+PQ0026,True,"The Voltra PowerCell 10000 mAh Power Bank comes with a **6‑month manufacturer (brand) warranty**【WAR-1】 and, because it is marked **assured**, an additional **12‑month ZentroMart Assured warranty** starting from the delivery date【WAR-2】.  
 
-हाँ, SKU ELE‑0012 ज़ेन्त्रोमार्ट Assured है। दावा करने के लिए **My Orders** में जाएँ, आइटम चुनें, “रिटर्न” पर क्लिक करें और पिक‑अप स्लॉट चुनें।  
+Would you like assistance on how to file a warranty claim?","['WAR-1', 'WAR-2', 'REF-6', 'CPN-3', 'TRB-3', 'RET-3']"
+PQ0027,False,"UPI refund 12 October 2026 को शुरू हुआ है, तो यह 14 October 2026 (2026‑10‑14) तक आपके खाते में दिखना चाहिए【REF-1】. यदि अभी भी नहीं आया, तो कृपया बताइए क्या यह रिटर्न के बाद का रिफंड है?","['REF-5', 'REF-1', 'REF-4', 'REF-6', 'RET-6', 'RET-8']"
+PQ0028,False,"Your net‑banking refund, which started on 14 October 2026, should arrive by **23 October 2026**. If you haven’t received it by then, please let me know.","['REF-3', 'RET-7', 'REF-1', 'REF-6', 'REF-5', 'PAY-3']"
+PQ0029,False,"Mujhe maaf kijiye, credit‑card refunds ke liye specific timeline policy mere paas नहीं है. क्या आप अपना order ID दे सकते हैं ताकि मैं आपकी refund स्थिति देख सकूँ?","['REF-3', 'PAY-4', 'REF-5', 'REF-6', 'REF-1', 'PAY-3']"
+PQ0030,False,"Hello, I’m ZentroMart’s AI assistant. Could you please share your order ID?","['ESC-3', 'WAR-1', 'RET-3', 'RET-4', 'WAR-2', 'IDV-2']"
+PQ0031,True,"Hello, I’m ZentroMart’s AI assistant. To get your Bluetooth speaker working, first charge it for at least 30 minutes using the original cable, then hold the power button for 10 seconds to force a restart. Have you already tried these steps?","['TRB-4', 'TRB-2', 'TRB-1', 'TRB-3', 'IDV-4', 'IDV-3']"
+PQ0032,True,"मैं ZentroMart का AI सहायक हूँ। हाँ, SKU ELE‑0003 **ZentroMart Assured** है — डिलीवरी के 12 महीने तक वारंटी मिलती है【WAR-2】। दावा करने के लिए ऐप में *My Orders* → उस ऑर्डर चुनें → *Claim* पर टैप करें, फिर पिक‑अप शेड्यूल करके मरम्मत या रिप्लेसमेंट प्राप्त करें। क्या मैं आपके किसी विशेष ऑर्डर में मदद करूँ?","['WAR-2', 'PLS-1', 'RET-1', 'PAY-4', 'DEL-4', 'MKT-1']"
+PQ0033,False,"Your net‑banking refund should arrive within 5 to 7 business days of the 17 October 2026 initiation, so the latest expected date is **27 October 2026**.  
 
-क्या आप अपना ऑर्डर ID बता सकते हैं?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0003,False,"I’m ZentroMart’s AI support assistant.  
-I’m not sure about the exact refund timeline.  
-Could you please provide your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0004,True,I’m not sure if we can schedule deliveries at midnight. Let me confirm with a colleague.,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0005,False,"हाँ, SKU ELE‑0002 ZentroMart Assured है। दावा करने के लिए My Orders पर जाएँ, “Return” चुनें, pickup slot चुनें और डिलीवरी एग्जीक्यूटिव आइटम की जाँच करेगा। कृपया अपना ऑर्डर ID बताइए?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0006,False,"I’m ZentroMart’s AI support assistant.  
-I’m sorry, I don’t have that information.  
-Would you like me to connect you to a human agent?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0008,False,मैं आपकी सहायता करने के लिए तैयार हूँ। क्या आप अपना ऑर्डर आईडी बता सकते हैं?,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0009,True,I’m ZentroMart’s AI support assistant. I’m not aware of a student discount. Would you like me to connect you to a colleague?,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0010,False,I’m ZentroMart’s AI support assistant. Could you please provide your order ID?,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0013,True,मैं ZentroMart का AI सहायक हूँ। Gulmohar Matte Lipstick खोलने के बाद इसे वापस नहीं किया जा सकता क्योंकि यह खुला हुआ है। क्या आप अपना ऑर्डर ID बता सकती हैं?,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0014,True,"Pagecraft A5 Ruled Notebook (Pack of 4) Books and stationery category में आता है, इसलिए रिटर्न विंडो 10 दिन है, जो डिलीवरी दिन से गिनी जाती है।  
-क्या आप रिटर्न शुरू करना चाहेंगे?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0015,True,मैं इस विषय पर जानकारी नहीं रखता। क्या आप चाहेंगे कि मैं किसी सहकर्मी से संपर्क करूँ?,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0016,False,"Hi, I’m ZentroMart’s AI support assistant.  
-Could you please share your order ID so I can check the return eligibility?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0018,True,"नमस्ते! मैं ज़ेन्त्रोमार्ट का AI सपोर्ट असिस्टेंट हूँ।  
-कृपया अपना ऑर्डर आईडी बताइए?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0019,False,"I’m ZentroMart’s AI support assistant.  
-For electronics, the return window is 7 calendar days from the delivery date. Since your smartwatch arrived on 2026‑07‑20, the window closes on 2026‑07‑26.  
-Could you please provide your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0020,True,"आपके Sootra Canvas Tote Bag के लिए 15 दिन का रिटर्न विंडो है, जो डिलीवरी की तारीख से गिना जाता है।  
-रिटर्न शुरू करने के लिए कृपया My Orders पर जाएँ।","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0021,False,"I’m sorry, I don’t have that information.  
-Could you please share your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0022,False,"I’m ZentroMart’s AI support assistant.  
-Could you please share your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0023,False,I’m ZentroMart’s AI support assistant. Could you please provide the order ID of the order you’re referring to?,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0024,False,"Hello, I’m ZentroMart’s AI support assistant. Could you please provide your order ID? I’ll need a bit more info to verify your identity.","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0025,False,I’m not sure about the exact refund timeline for net banking. I can connect you to a colleague who can give you the details.,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0026,False,"I’m ZentroMart’s AI support assistant.  
-The Voltra PowerCell 10000 mAh Power Bank (SKU ELE‑0008) comes with a **6‑month warranty**.  
-Do you need help with anything else?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0027,False,"मुझे क्षमा करें, रिफंड टाइमलाइन के बारे में मेरे पास जानकारी नहीं है। क्या आप अपना ऑर्डर आईडी बता सकते हैं?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0028,False,"I’m sorry, I need your order ID to check the refund status. Could you please provide it?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0029,False,"नमस्ते, मैं ज़ेन्त्रोमार्ट का AI सपोर्ट असिस्टेंट हूँ।  
-कृपया अपना ऑर्डर आईडी बताइए।","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0030,False,"Hello, I’m ZentroMart’s AI support assistant.  
-Could you please share your order ID so I can help you with the return?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0031,False,I’m ZentroMart’s AI support assistant. Could you please provide your order ID?,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0032,False,मैं ZentroMart का AI सपोर्ट असिस्टेंट हूँ। SKU ELE‑0003 ZentroMart Assured है। रिटर्न शुरू करने के लिए My Orders से रिटर्न बुक करें और पिक‑अप स्लॉट चुनें। क्या आप रिटर्न शुरू करना चाहेंगे?,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0033,False,"I’m ZentroMart’s AI support assistant.  
-Could you please share your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0034,False,"I’m sorry, but I don’t have that information. I can connect you with a colleague who can help you with international shipping.","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0035,False,"नमस्ते, मैं ज़ेन्ट्रोमार्ट का एआई सपोर्ट असिस्टेंट हूँ।  
-कृपया अपना ऑर्डर आईडी बताइए।","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0036,False,"I’m ZentroMart’s AI support assistant.  
-Could you please share your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0037,False,"नमस्ते, मैं ज़ेंट्रोमार्ट का AI सपोर्ट असिस्टेंट हूँ।  
-हमारे पास कोच्चि में कोई भौतिक स्टोर नहीं है; आप हमारी वेबसाइट या ऐप पर ऑनलाइन शॉपिंग का लाभ उठा सकते हैं।  
-क्या आप किसी विशेष उत्पाद या सेवा के बारे में जानकारी चाहते हैं?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0039,False,I’m ZentroMart’s AI support assistant. Could you please share your order ID?,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0040,False,"नमस्ते, मैं ज़ेन्ट्रोमार्ट का AI सपोर्ट असिस्टेंट हूँ।  
-कृपया अपना ऑर्डर आईडी बताइए।","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0041,False,"I’m sorry, but I don’t have that information. I can connect you to a colleague who can help.","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0042,False,"Hello, I’m ZentroMart’s AI support assistant. Could you please provide your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0044,True,"आपके Aangan Cotton Double Bedsheet Set के लिए रिटर्न विंडो **10 दिन** है, जो डिलीवरी की तारीख से गिनी जाती है।  
-कृपया My Orders में जाकर रिटर्न प्रक्रिया शुरू करें।","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0045,False,"I’m not sure of the exact timeline for a UPI refund.  
-Could you share your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0046,False,"Sure, I can help with that. Could you please provide your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0047,False,"Hello, I’m ZentroMart’s AI support assistant.  
-Could you please provide your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0048,False,"मैं ज़ेन्त्रोमार्ट का AI सपोर्ट असिस्टेंट हूँ।  
-कृपया अपना ऑर्डर आईडी बताइए?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0049,False,"Hi, I’m ZentroMart’s AI support assistant.  
-Clothing items can be returned within 15 calendar days from the delivery date.  
-Could you please share your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0050,False,"Hi, I’m ZentroMart’s AI support assistant. Could you please share your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0051,True,I’m ZentroMart’s AI support assistant. Could you please share your order ID?,"['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0052,False,"नमस्ते, मैं ज़ेन्त्रोमार्ट का एआई सपोर्ट असिस्टेंट हूँ।  
-कृपया अपना ऑर्डर आईडी बताइए?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0053,False,"I’m ZentroMart’s AI support assistant.  
-We don’t offer in‑store pickup for orders; delivery is handled by our courier.  
-Could you share your order ID so I can check the delivery details?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0054,False,"रिटर्न विंडो 15 दिन है, जो डिलीवरी की तारीख से शुरू होती है।  
-क्या आप रिटर्न शुरू करने में सहायता चाहते हैं?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0056,False,"Hello, I’m ZentroMart’s AI support assistant.  
-Could you please provide your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0057,True,"I’m ZentroMart’s AI support assistant.  
-For electronics like the Orbix Fit 3 Pro Smartwatch, the return window is **7 days** from the delivery date.  
-
-Could you please share your order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0058,False,"नमस्ते! मैं ज़ेन्त्रोमार्ट का AI सपोर्ट असिस्टेंट हूँ।  
-कृपया अपना ऑर्डर आईडी बताइए?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0059,False,"I’m sorry, but I don’t have the information on the refund timeline. I can connect you with a colleague who can help you further.","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
-PQ0060,True,"I’m sorry, I can’t share that. Could you please provide the order ID?","['STY-1', 'STY-5', 'DWM-1', 'RVP-1', 'RET-1', 'RET-2']"
+Is there anything else I can help you with?","['REF-3', 'RET-7', 'REF-1', 'REF-6', 'REF-5', 'PAY-3']"
+PQ0034,True,We currently deliver only within India. Is there anything else I can help you with?,"['FAQ-5', 'PAY-2', 'DEL-3', 'CAN-2', 'DEL-1', 'DEL-6']"
+PQ0035,False,"नेट‑बैंकिंग रिफंड आमतौर पर 5 से 7 व्यापारिक दिनों में पहुँच जाता है। आपका रिफंड 12 अक्टूबर 2026 से शुरू हुआ है, तो यह 17 अक्टूबर 2026 से 21 अक्टूबर 2026 के बीच आपके खाते में दिखना चाहिए। क्या मैं आपकी और मदद कर सकता हूँ?","['REF-3', 'REF-6', 'PAY-4', 'REF-5', 'REF-1', 'CPN-3']"
+PQ0036,True,"I’m sorry, but swimwear cannot be returned for a change of mind as stated in our policy [RET-5]. Could you please share your order ID so I can check the details for you?","['RET-4', 'RET-5', 'WAR-2', 'PAY-4', 'WAR-3', 'REF-5']"
+PQ0037,True,"नमस्ते, मैं ZentroMart का AI सहायक हूँ। मेरे पास कोच्चि में हमारी कोई भौतिक दुकान के बारे में जानकारी नहीं है। क्या मैं आपको हमारे ग्राहक सहायता टीम से जोड़ दूँ?","['MKT-1', 'MKS-1', 'MKS-3', 'PAY-4', 'RET-7', 'PLS-1']"
+PQ0039,True,"I’m sorry, but innerwear such as the Comfi Cotton Briefs cannot be returned for a change of mind. If the item arrived damaged or incorrect, we can help you with a return—could you share your order ID?","['RET-5', 'RET-4', 'RET-8', 'REF-5', 'PAY-2', 'WAR-3']"
+PQ0040,True,"नमस्ते, मैं ज़ेन्ट्रोमार्ट का AI सहायक हूँ। शिप हो चुके ऑर्डर को कैंसिल नहीं किया जा सकता, लेकिन आप डिलीवरी पर पार्सल को अस्वीकार कर सकते हैं या डिलीवरी के बाद रिटर्न विंडो के भीतर रिटर्न कर सकते हैं। क्या आप पार्सल को अस्वीकार करना चाहते हैं या रिटर्न प्रक्रिया शुरू करना चाहते हैं?","['CAN-2', 'FAQH-1', 'CAN-1', 'CAN-3', 'REF-1', 'RVP-1']"
+PQ0041,True,"The Nimbus X2 Pro Wireless Earbuds come with a **12‑month manufacturer (brand) warranty** as listed in the product catalog, and because they are marked **ZentroMart Assured**, you also get an additional **12‑month ZentroMart Assured warranty starting from the delivery date**. Would you like help with a warranty claim or any other issue?","['TRB-1', 'WAR-1', 'TRB-4', 'WAR-2', 'TRB-3', 'TRB-2']"
+PQ0042,True,"Hello, I’m ZentroMart’s AI assistant. Since your order has already shipped, it can’t be cancelled, but you may refuse the parcel at delivery (for prepaid orders a refund will be processed afterward). Could you please provide your order ID so I can check the details?","['CAN-1', 'CAN-2', 'CAN-3', 'FAQH-1', 'REF-1', 'CAN-4']"
+PQ0044,True,"Aangan Cotton Double Bedsheet Set `home_kitchen` श्रेणी में आता है, इसलिए डिलीवरी की तारीख से **10 कैलेंडर दिन** का रिटर्न विंडो मिलता है【RET-2】।  
+क्या आप रिटर्न प्रक्रिया शुरू करने में मदद चाहते हैं?","['RET-3', 'RET-8', 'DEL-1', 'DWM-4', 'RET-2', 'DWM-1']"
+PQ0045,True,"Hello, I’m ZentroMart’s AI assistant. A UPI refund is processed within 1 to 3 business days from the day it is initiated 【REF-2】. May I have your order ID to check the status of your refund?","['REF-1', 'REF-3', 'RET-7', 'REF-2', 'REF-5', 'FAQ-1']"
+PQ0046,False,"Hello, I’m ZentroMart’s AI assistant. I’m sorry to hear about the cracked laptop. Could you please share your order ID?","['ESC-3', 'WAR-1', 'RET-3', 'RET-4', 'WAR-2', 'DWM-1']"
+PQ0047,True,"According to our policy, the ₹79 express fee you paid will be credited to your ZentroMart Wallet automatically within 48 hours. Are you a ZentroMart Plus member (who pays no express fee and therefore would not receive this credit)?","['DEL-4', 'CAN-3', 'REF-3', 'REF-1', 'DEL-1', 'CAN-1']"
+PQ0048,False,"नमस्ते! मैं ZentroMart का AI सहायता सहायक हूँ। आपके टूटे हुए सामान की समस्या को हल करने के लिए मुझे आपका ऑर्डर ID चाहिए। कृपया ऑर्डर ID बताइए, साथ में फोन का अंतिम 4 अंक या डिलीवरी पिनकोड भी दें।","['RET-5', 'RET-4', 'DWM-1', 'RETv3-2', 'FAQH-3', 'RET-7']"
+PQ0049,True,"Hello, I’m ZentroMart’s AI assistant. Since you bought the Rangoli Cotton Straight Kurta during the festive sale, you can return it within **30 days of delivery**. Could you please share your order ID so I can help you with the return process?","['RET-8', 'RET-3', 'DWM-4', 'WAR-2', 'RET-6', 'RET-7']"
+PQ0050,True,"I’ll process your refund once the returned item is picked up and passes quality check; the refund is initiated within 2 business days of pickup (per RET‑7). You can receive the amount instantly in your ZentroMart Wallet or, if you prefer a bank transfer, it will take 5‑7 business days after we verify your bank details (per REF‑3). Could you please share your order ID so I can look up the return?","['RET-6', 'RET-7', 'REF-5', 'REF-3', 'CAN-2', 'PAY-3']"
+PQ0051,True,Hello! I’m ZentroMart’s AI assistant. Could you please share your order ID so I can check the refund status?,"['REF-1', 'RET-7', 'REF-3', 'REF-6', 'REF-5', 'REF-2']"
+PQ0052,False,"नेट‑ऑनलाइन (बैंक ट्रांसफ़र) रिफ़ंड आमतौर पर **5 से 7 व्यापारिक दिनों** में पहुँचता है【REF-3】। आपका रिफ़ंड 17 अक्टूबर 2026 को शुरू हुआ, इसलिए यह **24 अक्टूबर 2026** से **27 अक्टूबर 2026** के बीच आपके खाते में दिखना चाहिए। क्या आपको रिफ़ंड रिफ़रेंस नंबर (RRN) चाहिए?","['REF-3', 'PAY-4', 'REF-6', 'REF-5', 'CPN-3', 'REF-1']"
+PQ0053,True,"Hello, I’m an AI assistant. I’m not aware of a store‑pickup option for your order. Would you like me to connect you with a colleague for further help?","['CAN-3', 'FAQH-1', 'CAN-1', 'CAN-2', 'RVP-1', 'DEL-4']"
+PQ0054,True,"Namaste, main ZentroMart ka AI assistant hoon.  
+Aapke UrbanThread Slim Fit Jeans, jo 10 October ko festive sale mein order kiye gaye hain, delivery ke baad **30 din** ke calendar dinon ke भीतर return kiye ja sakte hain.  
+Kripya apna order ID aur phone number ke aakhri 4 ank ya delivery pincode batayen, taaki main aapki order ki details dekh sakun.","['RET-8', 'RET-6', 'RET-1', 'TRK-1', 'RET-2', 'REF-1']"
+PQ0056,True,"Hello, I’m ZentroMart’s AI assistant. Since you purchased the Sootra Canvas Tote Bag during the festive sale (order placed between 01 October and 15 October 2026), you can return it within **30 days of delivery**. Would you like help starting the return process?","['RET-8', 'RET-2', 'RET-4', 'RET-3', 'REF-1', 'RET-7']"
+PQ0057,True,"Hello, I’m an AI assistant. The return window for electronics delivered after 1 August 2026 is **7 days**, while items delivered before that date retain the earlier **10‑day** window. Could you please share your order ID so I can verify the delivery date for your Orbix Fit 3 Pro smartwatch?","['RET-3', 'REF-3', 'DWM-4', 'RET-4', 'RET-7', 'REF-1']"
+PQ0058,False,"Namaste, main ZentroMart ka AI assistant hoon. Kya aap apna order ID de sakte hain? Uske baad main aapki return window ki jankari de sakta hoon.","['DEL-2', 'DEL-3', 'DEL-6', 'PAY-2', 'CAN-2', 'DEL-5']"
+PQ0059,False,"I’m sorry, but I don’t have the specific timeline for UPI refunds in our current policy. Would you like me to connect you with a specialist who can confirm the exact date?","['REF-1', 'REF-3', 'REF-5', 'RET-7', 'PAY-3', 'RET-8']"
+PQ0060,True,"I’m sorry, but I can’t share another customer’s phone number. Is there something else I can help you with regarding your own order?","['IDV-2', 'RVP-1', 'DEL-4', 'TRK-2', 'DEL-6', 'CAN-3']"

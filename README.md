@@ -28,6 +28,7 @@ The grader is a string-matching check (`must_include` / `must_not_include`). See
 ## Setup
 
 ### 1. Requirements
+
 - Python 3.10 or newer
 - A Groq API key (or any OpenAI-compatible LLM endpoint)
 - A Gnani API key from https://app.gnani.ai/voice (one key covers both STT and TTS)
@@ -35,6 +36,7 @@ The grader is a string-matching check (`must_include` / `must_not_include`). See
 ### 2. Install
 
 **macOS / Linux**
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
@@ -43,6 +45,7 @@ cp .env.example .env
 ```
 
 **Windows (PowerShell)**
+
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
@@ -54,7 +57,7 @@ copy .env.example .env
 
 Open `.env` and fill in your keys. Never commit this file.
 
-```
+```env
 # LLM
 OPENAI_API_KEY=your-groq-or-openai-key
 OPENAI_BASE_URL=https://api.groq.com/openai/v1
@@ -100,12 +103,25 @@ This reads `kb/*.md`, splits it into chunks, embeds them and writes the index to
 ## How to run
 
 ### Ask one question (text)
+
 ```bash
 python run.py --text "How long does a card refund take?"
 ```
+
 Prints the reply and the section IDs the answer used.
 
+### Interactive demo (used for the video)
+
+To test the agent in a continuous chat loop that keeps conversation state across turns:
+
+```bash
+python demo_chat.py
+```
+
+This starts an interactive terminal prompt where you can type multi-turn conversations. Type `quit` to exit.
+
 ### Batch run on a folder of audio (the organizers' command)
+
 ```bash
 python run.py --audio_dir path/to/audio_files --out_dir sample_outputs
 ```
@@ -127,6 +143,7 @@ sample_outputs/
 Each file is handled by a fresh agent, so clips are independent.
 
 ### Evaluate on the practice set
+
 ```bash
 python scripts/evaluate.py --mode question   # 52 text questions
 python scripts/evaluate.py --mode asr        # 52 ASR-noise variants
@@ -141,9 +158,11 @@ Per-item results are written to `sample_outputs/` (for example `eval_questions.c
 ## How it works: the four steps
 
 ### Step 1: Answer a question with an LLM
+
 `src/llm.py` wraps the chat-completions API (OpenAI-compatible, so Groq works with only a base-URL change). `src/agent.py` gives the model a system prompt that makes it ZentroMart's support assistant: its role, its limits, and a first reply that says it is an AI assistant. With no documents, the model guesses at policies, which is why this step gives the weakest score.
 
 ### Step 2: Ground it in the documents (RAG)
+
 - **Chunking** (`scripts/build_index.py`): each Markdown file in `kb/` is split on its `## [SECTION-ID]` headings into 84 chunks. Every chunk keeps its section ID, document type, status and `effective_from` date.
 - **Embeddings**: chunks are embedded with `paraphrase-multilingual-MiniLM-L12-v2`, chosen so Hindi and Hinglish queries still match English policies.
 - **Retrieval** (`src/rag.py`): cosine similarity, then a precedence adjustment so current policy outranks agent guides, help pages, FAQs and marketing, and superseded documents (such as `pol_returns_v3_superseded.md`) are penalized. The top 6 chunks go to the model.
@@ -151,6 +170,7 @@ Per-item results are written to `sample_outputs/` (for example `eval_questions.c
 - **Source tracking**: the section IDs used are returned with every reply and saved in the outputs.
 
 ### Step 3: Hold a conversation
+
 - **Memory**: the message history is sent each turn, so follow-ups like "how long will that take?" refer to the same order.
 - **Tools** (`src/agent.py`, `src/tools_wrapper.py`, `src/data.py`):
   - `lookup_order`: fetches an order, only after the caller is verified
@@ -162,7 +182,9 @@ Per-item results are written to `sample_outputs/` (for example `eval_questions.c
 - **Refusals**: requests that break policy, such as instant compensation, are declined politely and routed to a human.
 
 ### Step 4: Give it a voice
+
 `src/voice.py` wraps Gnani's official SDK (`gnani-vachana`):
+
 - **STT**: transcribes the customer audio (`en-IN` accepts English mixed with Hindi).
 - **Unclear audio**: an empty transcript produces "Sorry, I didn't catch that. Could you say it again?" instead of calling the agent.
 - **TTS**: replies are spoken with the `timbre-v2.5` model and the `Kaveri` voice. The model is always named because the SDK's older default is no longer served.
@@ -180,6 +202,7 @@ Only Gnani is used for speech. No other STT or TTS service is called, even as a 
 ├── .env.example            # variable names only, no keys
 ├── requirements.txt
 ├── run.py                  # text query, or batch run on a folder of audio
+├── demo_chat.py            # interactive text CLI for the demo video
 ├── report.pdf              # short report
 ├── demo.mp4                # 2-minute demo
 ├── src/
